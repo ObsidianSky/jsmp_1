@@ -19,9 +19,12 @@ module.exports = {
     port: 8081,
     inline: true,
     contentBase: 'src/',
-    noInfo: true
+    noInfo: true,
+    stats: {
+      colors: true
+    }
   },
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-source-map',
   module: {
     rules: [
       {
@@ -31,6 +34,25 @@ module.exports = {
           loader: 'babel-loader',
           options: { presets: ['es2015', 'es2016'] }
         }]
+      },
+      {
+        test: /\.(c|sa|sc)ss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+              loader: 'postcss-loader',
+              options: {
+                  plugins: function () {
+                      return [
+                          require('precss'),
+                          require('autoprefixer')
+                      ];
+                  }
+              }
+          },
+          'sass-loader'
+        ]
       }
     ]
   },
@@ -39,7 +61,7 @@ module.exports = {
       name: 'common',
       filename: 'common.js',
       minChunks: 2
-    })
+    }),
+    new webpack.optimize.UglifyJsPlugin()
   ],
-
-}
+};

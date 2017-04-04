@@ -1,3 +1,5 @@
+import './componentA.scss';
+
 const str = 'String';
 const [s, t] = str;
 
