@@ -9,4 +9,5 @@ const pow = 2 ** 2;
 
 export default () => {
   console.log(str);
-}
+  console.log(pow);
+};
