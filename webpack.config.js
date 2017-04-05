@@ -16,7 +16,7 @@ module.exports = {
     publicPath:'/'
   },
   devServer: {
-    port: 8081,
+    port: 8082,
     inline: true,
     contentBase: 'src/',
     noInfo: true,
@@ -27,6 +27,12 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   module: {
     rules: [
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader'
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -45,7 +51,7 @@ module.exports = {
               options: {
                   plugins: function () {
                       return [
-                          require('precss'),
+                          require('postcss-short'),
                           require('autoprefixer')
                       ];
                   }
