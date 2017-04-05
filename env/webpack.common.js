@@ -43,12 +43,5 @@ module.exports = {
                 ]
             }
         ]
-    },
-    plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'common',
-            filename: 'common.js',
-            minChunks: 2
-        })
-    ]
+    }
 };

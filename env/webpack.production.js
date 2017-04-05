@@ -4,7 +4,12 @@ const webpack = require('webpack');
 
 module.exports = webpackMerge(commonConfig, {
     plugins: [
-        new webpack.optimize.UglifyJsPlugin()
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common',
+            filename: 'common.js',
+            minChunks: 2
+        })
     ]
 });
 
