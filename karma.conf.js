@@ -8,7 +8,8 @@ module.exports = function(config) {
         'karma-jasmine',
         'karma-webpack',
         'karma-phantomjs-launcher',
-        'karma-mocha-reporter'
+        'karma-mocha-reporter',
+        'karma-coverage'
     ],
 
     // frameworks to use
@@ -22,22 +23,26 @@ module.exports = function(config) {
     ],
 
 
-    // list of files to exclude
-    exclude: [
-    ],
-
-
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
         './tests.js': ['webpack']
     },
 
+    coverageReporter: {
+        includeAllSources: true,
+        dir: './coverage',
+        reporters: [
+            { type: 'html', subdir: '.' },
+            { type: 'lcovonly', subdir: '.' },
+            { type: 'text-summary' }
+        ]
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['mocha'],
+    reporters: ['mocha', 'coverage'],
 
 
     // web server port
@@ -48,6 +53,11 @@ module.exports = function(config) {
     colors: true,
 
     webpack: require('./env/webpack.test'),
+
+    webpackMiddleware: {
+        stats: 'errors-only',
+        noInfo: true
+    },
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG

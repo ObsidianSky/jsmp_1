@@ -5,10 +5,12 @@ module.exports = webpackMerge(commonConfig, {
     module: {
         rules: [
             {
-                test: /isIterable/,
-                use: [{
-                    loader: 'imports?Symbol=>false'
-                }]
+                test: /\.js$/,
+                exclude: /node_modules|\.spec\.js$/,
+                loader: 'istanbul-instrumenter-loader',
+                query: {
+                    esModules: true
+                }
             }
         ]
     }
