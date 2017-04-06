@@ -1,9 +1,9 @@
-Run:
+#### Run:
 - 'npm run dev' to run webpack-dev-server
 - 'npm run build' to build production version of app (will generate 'build' folder)
 - 'npm test' to run test and generate coverage (will generate 'coverage' folder)
 
-Loaders used:
+#### Loaders used:
 1. babel-loader
 2. url-loader
 3. html-loader
@@ -16,7 +16,7 @@ Loaders used:
 10. null-loader
 11. resolve-url-loader
 
-Plugins used:
+#### Plugins used:
 1. html-webpack-plugin
 2. extract-text-webpack-plugin
 3. LoaderOptionsPlugin
