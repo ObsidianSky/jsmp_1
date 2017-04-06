@@ -8,7 +8,6 @@ module.exports = webpackMerge(commonConfig, {
     devServer: {
         port: 8082,
         inline: true,
-        contentBase: 'src/',
         noInfo: true,
         stats: {
             colors: true
@@ -22,6 +21,25 @@ module.exports = webpackMerge(commonConfig, {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'eslint-loader'
+            },
+            {
+                test: /\.(c|sc)ss$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: function () {
+                                return [
+                                    require('postcss-short'),
+                                    require('autoprefixer')
+                                ];
+                            }
+                        }
+                    },
+                    'sass-loader'
+                ]
             }
         ]
     },

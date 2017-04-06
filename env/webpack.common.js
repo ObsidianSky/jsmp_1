@@ -1,5 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
+const HtmlPlugin = require('html-webpack-plugin');
 
 module.exports = {
     context: path.resolve(__dirname, '../src'),
@@ -10,8 +10,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, '../build'),
-        filename: '[name].bundle.js',
-        publicPath:'/'
+        filename: '[name].bundle.js'
     },
     module: {
         rules: [
@@ -24,24 +23,30 @@ module.exports = {
                 }]
             },
             {
-                test: /\.(c|sc)ss$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                loaders: [
                     {
-                        loader: 'postcss-loader',
+                        loader: 'url-loader',
                         options: {
-                            plugins: function () {
-                                return [
-                                    require('postcss-short'),
-                                    require('autoprefixer')
-                                ];
-                            }
+                            limit: 8192,
+                            name: 'images/[hash:6].[ext]?[hash]'
                         }
-                    },
-                    'sass-loader'
+                    }
+                ]
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    'html-loader'
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new HtmlPlugin({
+            inject: 'body',
+            filename: 'index.html',
+            template: path.resolve(__dirname, '../src/index.html')
+        })
+    ]
 };

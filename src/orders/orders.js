@@ -1,7 +1,9 @@
 import _ from 'lodash';
 
-//comment
-console.log('some code');
+const un = _.union([1, 2, 1, 2, 1, 2]);
+//comment;
 /*comment1*/
 
-console.log('orders');
+export default () => {
+    return un;
+};

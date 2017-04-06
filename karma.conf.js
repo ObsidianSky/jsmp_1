@@ -19,14 +19,14 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      './tests.js'
+      './tests-bundle.js'
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        './tests.js': ['webpack']
+        './tests-bundle.js': ['webpack']
     },
 
     coverageReporter: {
@@ -34,7 +34,6 @@ module.exports = function(config) {
         dir: './coverage',
         reporters: [
             { type: 'html', subdir: '.' },
-            { type: 'lcovonly', subdir: '.' },
             { type: 'text-summary' }
         ]
     },

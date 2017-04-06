@@ -1,3 +1,3 @@
-import stringLogger from './components/componentA/componentA';
+import componentA from './components/componentA/componentA';
 
-stringLogger();
+console.log(componentA().tpl);

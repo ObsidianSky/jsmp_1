@@ -4,13 +4,15 @@
     "eslint:recommended"
   ],
   "env": {
-    "browser": true
+    "browser": true,
+    "jasmine": true
   },
   "parserOptions": {
     "ecmaVersion": 7,
     "sourceType": "module"
   },
   "rules": {
+    "no-console": 0,
     "quotes": [2, "single"],
     "semi": [2, "always"],
     "eqeqeq": ["error", "always"],

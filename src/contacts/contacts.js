@@ -1,6 +1,4 @@
-import _ from 'lodash';
-
-console.log('contacts');
+// import _ from 'lodash';
 
 export default (t) => {
   if(t) {
